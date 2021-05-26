@@ -34,4 +34,4 @@ Your Pages site will use the layout and styles from the Jekyll theme you have se
 
 ### Support or Contact
 
-If you face any problems or have any doubts, please email us at orectique@gmail.com .
+If you face any problems or have any doubts, please email us at [orectique@gmail.com].
