@@ -6,8 +6,8 @@ import plotly.express as px
 
 import pandas as pd
 
-external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
-app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
+external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css']
+app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=external_stylesheets)
 
 server = app.server
 
@@ -21,7 +21,8 @@ app.layout = html.Div([
                 id='country',
                 options=[{'label': i, 'value': i} for i in available_countries],
                 value= ['Afghanistan', 'Japan'],
-                multi = True
+                multi = True,
+                clearable=False
             ),
 
 
@@ -46,7 +47,7 @@ def update_graph(country_names, year_value):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
-    fig = px.scatter(dff, x="Factor1", y="Factor2", color = 'Country', hover_data=['Year'])
+    fig = px.scatter(dff, x="Factor1", y="Factor2", template = 'plotly_dark', color = 'Country', hover_data=['Year'])
     
 
     return fig
