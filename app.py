@@ -9,6 +9,8 @@ import pandas as pd
 external_stylesheets = ['https://codepen.io/chriddyp/pen/bWLwgP.css']
 app = dash.Dash(__name__, external_stylesheets=external_stylesheets)
 
+server = app.server
+
 df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/Factors.csv')
 
 available_countries = df['Country'].unique()
