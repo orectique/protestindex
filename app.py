@@ -8,7 +8,7 @@ import pandas as pd
 
 external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css']
 app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=external_stylesheets)
-
+app.title = 'Protest Index'
 server = app.server
 
 df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/Factors.csv')
@@ -16,7 +16,11 @@ df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/
 available_countries = df['Country'].unique()
 
 app.layout = html.Div([
-    
+    html.H1(children='Protest Index'),
+    html.Div(children='''
+        A way to compare the magnitudes of protests around the world across years.
+        Choose the list of countries you would like to see and set the range of years.
+    '''),
     dcc.Dropdown(
                 id='country',
                 options=[{'label': i, 'value': i} for i in available_countries],
