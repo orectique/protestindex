@@ -9,7 +9,7 @@ import random
 
 external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css']
 app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=external_stylesheets)
-app.title = 'Protest Index Try'
+app.title = 'Protest Index'
 server = app.server
 
 df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/Factors.csv')
