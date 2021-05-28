@@ -21,6 +21,7 @@ app.layout = html.Div([
         A way to compare the magnitudes of protests around the world across years.
         Choose the list of countries you would like to see and set the range of years.
     '''),
+    html.Div([
     dcc.Dropdown(
                 id='country',
                 options=[{'label': i, 'value': i} for i in available_countries],
@@ -29,11 +30,13 @@ app.layout = html.Div([
                 clearable=False
             ),
 
+    ],style={'width': '48%', 'float': 'left', 'display': 'inline-block', 'padding': '25px 30px 25px 35px'}),
 
+    html.Div([
+        dcc.Graph(id='indicator-graphic')
+        ],style={'width': '100%', 'float': 'right', 'display': 'inline-block', 'padding': '25px 30px 25px 30px'}),
 
-    dcc.Graph(id='indicator-graphic'),
-
-    dcc.RangeSlider(
+    html.Div([dcc.RangeSlider(
         id='year--slider',
         min=df['Year'].min(),
         max=df['Year'].max(),
@@ -41,7 +44,10 @@ app.layout = html.Div([
         marks={str(year): str(year) for year in df['Year'].unique()},
         step=None
     )
+    ], style={'width': '50%', 'float': 'initial', 'display': 'inline-block', 'padding': '25px 30px 25px 35px'})
 ])
+
+#style={'width': '45%', 'float': 'right', 'display': 'inline-block'})
 
 @app.callback(
     Output('indicator-graphic', 'figure'),
