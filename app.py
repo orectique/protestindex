@@ -34,7 +34,7 @@ app.layout = html.Div([
                             style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '105px 10px 20px 30px'},
                         ),
         dcc.Markdown(
-                            """This interactive graph is a rendition of a study by Lorem Ipsum in which they explored the creation
+                            """This interactive graph is a rendition of a study which explored the creation
                             of a new indexing system to effectively capture the scale and hence enable the comparison of social unrest across countries
                             and years. """.replace(
                                 "  ", ""
