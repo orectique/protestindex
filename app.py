@@ -30,7 +30,7 @@ app.layout = html.Div([
                 """.replace(
                                 "  ", ""
                             ),
-                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '20px 10px 20px 30px'},
+                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '120px 10px 20px 30px'},
                         ),
         dcc.Markdown(
                             """This interactive graph is a rendition of a study by Sreehari P Sreedhar in which they explored the creation
@@ -68,7 +68,7 @@ app.layout = html.Div([
     html.Div([
         #graph
         dcc.Graph(id='indicator-graphic')
-    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '150px 10px 25px 10px'}),
+    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '135px 10px 25px 10px'}),
 
     html.Div([
         #timeline
