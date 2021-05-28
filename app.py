@@ -19,7 +19,6 @@ app.layout = html.Div([
     html.H1(children='Protest Index'),
     html.Div(children='''
         A way to compare the magnitudes of protests around the world across years.
-        Choose the list of countries you would like to see and set the range of years.
     '''),
     html.Div([
     dcc.Dropdown(
