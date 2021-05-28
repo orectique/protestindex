@@ -69,7 +69,7 @@ app.layout = html.Div([
     html.Div([
         #graph
         dcc.Graph(id='indicator-graphic')
-    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '115px 20px 25px 10px'}),
+    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '110px 20px 25px 10px'}),
 
     html.Div([
         #timeline
