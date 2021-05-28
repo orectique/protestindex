@@ -45,7 +45,7 @@ app.layout = html.Div([
         html.Div([
             html.A(
                             html.Button("View the Code Notebook on GitHub.", className="learn-more-button"),
-                            href="https://github.com/orectique/protestindex/blob/main/Code%20Notebook.txt",
+                            href="https://github.com/orectique/protestindex/blob/main/Protest%20Index%20-%20Code%20Notebook.ipynb",
                             target="_blank",
                         )
                     ],
