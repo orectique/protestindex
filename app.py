@@ -61,7 +61,7 @@ app.layout = html.Div([
                 multi = True,
                 clearable=False
             ),
-    ], style = {'width' : '100%', 'float':'left', 'display': 'inline-block', 'padding': '30px 10px 30px 20px'}),
+    ], style = {'width' : '100%', 'float':'left', 'display': 'inline-block', 'padding': '30px 10px 30px 20px', 'color':'black'}),
 
     ], style = {'width' : '30%', 'float': 'left', 'display': 'inline-block'}),
 
