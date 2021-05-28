@@ -1,14 +1,15 @@
 import dash
 import dash_core_components as dcc
 import dash_html_components as html
+import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import plotly.express as px
+
 
 import pandas as pd
 import random
 
-external_stylesheets = ['https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css']
-app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=external_stylesheets)
+app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=[dbc.themes.SUPERHERO])
 app.title = 'Protest Index'
 server = app.server
 
@@ -30,10 +31,10 @@ app.layout = html.Div([
                 """.replace(
                                 "  ", ""
                             ),
-                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '120px 10px 20px 30px'},
+                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '105px 10px 20px 30px'},
                         ),
         dcc.Markdown(
-                            """This interactive graph is a rendition of a study by Sreehari P Sreedhar in which they explored the creation
+                            """This interactive graph is a rendition of a study by Lorem Ipsum in which they explored the creation
                             of a new indexing system to effectively capture the scale and hence enable the comparison of social unrest across countries
                             and years. """.replace(
                                 "  ", ""
@@ -68,7 +69,7 @@ app.layout = html.Div([
     html.Div([
         #graph
         dcc.Graph(id='indicator-graphic')
-    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '135px 10px 25px 10px'}),
+    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '115px 20px 25px 10px'}),
 
     html.Div([
         #timeline
@@ -80,7 +81,7 @@ app.layout = html.Div([
         marks={str(year): str(year) for year in df['Year'].unique()},
         step=None
     )
-    ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '25px 40px 25px 40px'})
+    ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '25px 40px 25px 40px', 'color': 'white'})
   
 ])
 
@@ -94,8 +95,8 @@ def update_graph(country_names, year_value):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
-    fig = px.scatter(dff, x="Factor1", y="Factor2", template = 'plotly_dark', color = 'Country', hover_data=['Year'])
-    
+    fig = px.scatter(dff, x="Factor1", y="Factor2", template = 'plotly_dark', color = 'Country', hover_data=['Year'], title = "Scatter Plot of Protest Indices Across Years")
+
 
     return fig
 
