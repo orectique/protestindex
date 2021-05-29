@@ -36,7 +36,11 @@ app.layout = html.Div([
         dcc.Markdown(
                             """This interactive graph is a rendition of a study which explored the creation
                             of a new indexing system to effectively capture the scale and hence enable the comparison of social unrest across countries
-                            and years. """.replace(
+                            and years. Factor1 captures the fatality and peacefulness of protests in a country-year and Factor2 represents the number of 
+                            days of protest in a year. A high Factor1 value indicates that the events in the country-year were more violent than peaceful and saw a lot of fatalities
+                            and a low Factor1 value implies that events in the country-year were more peaceful than violent and saw a relatively low number of fatilites.
+                            
+                            To use the graph, choose countries from the dropdown menu and select the range of years using the slider below. """.replace(
                                 "  ", ""
                             ),
                             style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '20px 10px 20px 20px'},
