@@ -31,7 +31,7 @@ app.layout = html.Div([
                 """.replace(
                                 "  ", ""
                             ),
-                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '105px 10px 20px 30px'},
+                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '75px 10px 20px 30px'},
                         ),
         dcc.Markdown(
                             """This interactive graph is a rendition of a study which explored the creation
@@ -43,7 +43,7 @@ app.layout = html.Div([
                             To use the graph, choose countries from the dropdown menu and select the range of years using the slider below. """.replace(
                                 "  ", ""
                             ),
-                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '20px 10px 20px 20px'},
+                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '20px 10px 0px 20px'},
                         ),
 
         html.Div([
@@ -53,7 +53,7 @@ app.layout = html.Div([
                             target="_blank",
                         )
                     ],
-                    style = {'font-family' : '"Times New Roman", Times, serif', 'display':'inline-block', 'padding':'30px 10px 30px 20px' },
+                    style = {'font-family' : '"Times New Roman", Times, serif', 'display':'inline-block', 'padding':'20px 10px 30px 20px' },
                 ),
 
         html.Div([
@@ -65,17 +65,16 @@ app.layout = html.Div([
                 multi = True,
                 clearable=False
             ),
-    ], style = {'width' : '100%', 'float':'left', 'display': 'inline-block', 'padding': '30px 10px 30px 20px', 'color':'black'}),
+    ], style = {'width' : '100%', 'float':'left', 'display': 'inline-block', 'padding': '20px 10px 30px 20px', 'color':'black'}),
 
     ], style = {'width' : '30%', 'float': 'left', 'display': 'inline-block'}),
 
 
     html.Div([
         #graph
-        dcc.Graph(id='indicator-graphic')
-    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '110px 20px 25px 10px'}),
+        dcc.Graph(id='indicator-graphic'),
 
-    html.Div([
+            html.Div([
         #timeline
         dcc.RangeSlider(
         id='year--slider',
@@ -85,7 +84,10 @@ app.layout = html.Div([
         marks={str(year): str(year) for year in df['Year'].unique()},
         step=None
     )
-    ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '25px 40px 25px 40px', 'color': 'white'})
+    ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '90px 20px 25px 20px', 'color': 'white'})
+    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '80px 20px 25px 10px'}),
+
+
   
 ])
 
