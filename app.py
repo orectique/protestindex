@@ -43,7 +43,7 @@ app.layout = html.Div([
                             To use the graph, choose countries from the dropdown menu and select the range of years using the slider below. """.replace(
                                 "  ", ""
                             ),
-                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '20px 10px 0px 20px'},
+                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '20px 10px 10px 20px'},
                         ),
 
         html.Div([
@@ -84,7 +84,7 @@ app.layout = html.Div([
         marks={str(year): str(year) for year in df['Year'].unique()},
         step=None
     )
-    ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '90px 20px 25px 20px', 'color': 'white'})
+    ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '100px 20px 25px 20px', 'color': 'white'})
     ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '80px 20px 25px 10px'}),
 
 
