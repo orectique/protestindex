@@ -53,11 +53,23 @@ app.layout = html.Div([
                             target="_blank",
                         )
                     ],
-                    style = {'font-family' : '"Times New Roman", Times, serif', 'display':'inline-block', 'padding':'20px 10px 30px 20px' },
+                    style = {'font-family' : '"Times New Roman", Times, serif', 'float':'left','display':'inline-block', 'padding':'20px 10px 30px 20px' },
                 ),
+
+         html.Div([
+        dcc.RadioItems(
+            id = 'theme',
+            options=[
+        {'label': 'Light', 'value': 'seaborn'},
+        {'label': 'Dark', 'value': 'plotly_dark'}
+         ],
+            value='plotly_dark',
+            inputStyle={"margin-left": "10px"}),
+            ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'20px 30px 30px 20px', 'color': 'white' }),
 
         html.Div([
         #country select
+       
         dcc.Dropdown(
                 id='country',
                 options=[{'label': i, 'value': i} for i in available_countries],
@@ -96,12 +108,14 @@ app.layout = html.Div([
 @app.callback(
     Output('indicator-graphic', 'figure'),
     Input('country', 'value'),
-    Input('year--slider', 'value'))
-def update_graph(country_names, year_value):
+    Input('year--slider', 'value'),
+    Input('theme', 'value'))
+
+def update_graph(country_names, year_value, theme_val):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
-    fig = px.scatter(dff, x="Factor1", y="Factor2", template = 'plotly_dark', color = 'Country', hover_data=['Year'], title = "Scatter Plot of Protest Indices Across Years")
+    fig = px.scatter(dff, x="Factor1", y="Factor2", template = theme_val, color = 'Country', hover_data=['Year'], title = "Scatter Plot of Protest Indices Across Years")
 
 
     return fig
