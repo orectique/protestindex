@@ -65,7 +65,7 @@ app.layout = html.Div([
          ],
             value='plotly_dark',
             inputStyle={"margin-left": "10px"}),
-            ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'20px 30px 30px 20px', 'color': 'white' }),
+            ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'25px 30px 30px 20px', 'color': 'white' }),
 
         html.Div([
         #country select
