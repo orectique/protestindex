@@ -1,36 +1,13 @@
 ## Annual Protest Index
 
-You can use the [editor on GitHub](https://github.com/orectique/protestindex/edit/main/README.md) to maintain and preview the content for your website in Markdown files.
+This is the back repository for the [Unrest Evaluation Index (UEI) Project](https://unrest-index.herokuapp.com/). UEI is a novel way to compare the intensity of protests across timeframes and locations. The interactive graph at [https://unrest-index.herokuapp.com/](https://unrest-index.herokuapp.com/) allows one to compare country-years of protests.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### How to use
 
-### Markdown
+Upon initialization, the graph displays the country-year values for a caountry randomly selected from the list of available countries.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/orectique/protestindex/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. Select the relevant countries from the dropdown menu on the bottom - left of the page.
+2. Use the range slider below the graph output to select the range of years.
 
 ### Support or Contact
 
