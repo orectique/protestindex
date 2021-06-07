@@ -27,7 +27,7 @@ app.layout = html.Div([
         #Title, subtitle, button
         dcc.Markdown(
                             """
-                ### Quantifying events of Social Unrest: Unrest Evaluation Index
+                ### Quantifying events of Social Unrest: Unrest Evaluation Index (UEI)
                 """.replace(
                                 "  ", ""
                             ),
@@ -115,7 +115,7 @@ def update_graph(country_names, year_value, theme_val):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
-    fig = px.scatter(dff, x="Factor1", y="Factor2", template = theme_val, color = 'Country', hover_data=['Year'], title = "Scatter Plot of Protest Indices Across Years")
+    fig = px.scatter(dff, x="Factor1", y="Factor2", template = theme_val, color = 'Country', hover_data=['Year'], title = "Scatter Plot of UEI Across Years")
 
 
     return fig
