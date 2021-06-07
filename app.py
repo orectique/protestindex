@@ -10,7 +10,7 @@ import pandas as pd
 import random
 
 app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=[dbc.themes.SUPERHERO])
-app.title = 'Protest Index'
+app.title = 'Unrest Index'
 server = app.server
 
 df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/Factors.csv')
@@ -27,7 +27,7 @@ app.layout = html.Div([
         #Title, subtitle, button
         dcc.Markdown(
                             """
-                ### Quantifying events of Social Unrest: Protest Index
+                ### Quantifying events of Social Unrest: Unrest Evaluation Index
                 """.replace(
                                 "  ", ""
                             ),
