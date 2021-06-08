@@ -1,5 +1,6 @@
 import dash
 import dash_core_components as dcc
+from dash_core_components.Markdown import Markdown
 import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
@@ -34,7 +35,7 @@ app.layout = html.Div([
                 """.replace(
                                 "  ", ""
                             ),
-                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '75px 10px 20px 30px'},
+                            style = {'font-family' : '"Times New Roman", Times, serif', 'padding': '65px 10px 20px 30px'},
                         ),
         dcc.Markdown(
                             """This interactive graph is a rendition of a study which explored the creation
@@ -71,18 +72,6 @@ app.layout = html.Div([
             ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'25px 30px 30px 20px', 'color': 'white' }),
 
 
-html.Div([
-        dcc.RadioItems(
-            id = 'bg',
-            options=[
-        {'label': 'On', 'value': 'on'},
-        {'label': 'Off', 'value': 'off'}
-         ],
-            value='off',
-            inputStyle={"margin-left": "10px"}),
-            ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'25px 30px 30px 20px', 'color': 'white' }),
-
-
         html.Div([
         #country select
        
@@ -113,7 +102,7 @@ html.Div([
         step=None
     )
     ], style = {'width' : '100%', 'margin':'auto', 'display': 'inline-block', 'padding': '100px 20px 25px 20px', 'color': 'white'})
-    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '80px 20px 25px 10px'}),
+    ], style = {'width' : '70%', 'height':'100%', 'float': 'right', 'display': 'inline-block', 'padding': '70px 20px 25px 10px'}),
 
 
   
@@ -126,20 +115,13 @@ html.Div([
     Input('country', 'value'),
     Input('year--slider', 'value'),
     Input('theme', 'value'),
-    Input('bg', 'value')
 )
-def update_graph(country_names, year_value, theme_val, bg_val):
+def update_graph(country_names, year_value, theme_val):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
 
-    df2 = df[df['Country'].isin(list(country_names)) == False]
-
     fig = px.scatter(dff, x="Unrest Severity", y="Unrest Intensity", template = theme_val, color = 'Country', hover_data=['Year'], title = "UEM Across Years")
-    
-    if bg_val == 'on':
-       fig.add_trace(go.Scatter(x = df2['Unrest Severity'], y = df2['Unrest Intensity'], mode = 'markers', showlegend = False))
-       #fig.add_trace(px.scatter(df2, x = 'Factor1', y = 'Factor2'))
 
     fig.update_xaxes(range=[-7, 7])
     fig.update_yaxes(range=[-2, 3.5])
