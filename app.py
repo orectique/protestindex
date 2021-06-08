@@ -11,11 +11,11 @@ import pandas as pd
 import random
 
 app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=device-width, initial-scale=1"}], external_stylesheets=[dbc.themes.SUPERHERO])
-app.title = 'Unrest Evaluation Index'
+app.title = 'Unrest Evaluation Mapping'
 server = app.server
 
 #
-df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/Factors.csv')
+df = pd.read_csv('https://raw.githubusercontent.com/orectique/unrest-mapping/main/Factors.csv')
 
 available_countries = df['Country'].unique()
 rand_country = random.choice(available_countries)
@@ -38,7 +38,7 @@ app.layout = html.Div([
                         ),
         dcc.Markdown(
                             """This interactive graph is a rendition of a study which explored the creation
-                            of a new indexing system to effectively capture the scale and hence enable the comparison of social unrest across countries
+                            of a new mapping system to effectively capture the scale and hence enable the comparison of social unrest across countries
                             and years. Unrest Severity captures the fatality and peacefulness of protests in a country-year and Unrest Intensity represents the number of 
                             days of protest in a year. A high Unrest Severity value indicates that the events in the country-year were more violent than peaceful and saw a lot of fatalities
                             and a low Unrest Severity value implies that events in the country-year were more peaceful than violent and saw a relatively low number of fatilites.
@@ -52,7 +52,7 @@ app.layout = html.Div([
         html.Div([
             html.A(
                             html.Button("View the Code Notebook on GitHub.", className="learn-more-button"),
-                            href="https://github.com/orectique/protestindex/blob/main/Protest%20Index%20-%20Code%20Notebook.ipynb",
+                            href= 'https://github.com/orectique/unrest-mapping/blob/main/Unrest%20Mapping%20-%20Code%20Notebook.ipynb',
                             target="_blank",
                         )
                     ],
@@ -137,8 +137,8 @@ def update_graph(country_names, year_value, theme_val, bg_val):
 
     fig = px.scatter(dff, x="Unrest Severity", y="Unrest Intensity", template = theme_val, color = 'Country', hover_data=['Year'], title = "UEM Across Years")
     
-    #if bg_val == 'on':
-       #fig.add_trace(go.Scatter(x = df2.Factor1, y = df2.Factor2, mode = 'markers', showlegend = False))
+    if bg_val == 'on':
+       fig.add_trace(go.Scatter(x = df2['Unrest Severity'], y = df2['Unrest Intensity'], mode = 'markers', showlegend = False))
        #fig.add_trace(px.scatter(df2, x = 'Factor1', y = 'Factor2'))
 
     fig.update_xaxes(range=[-7, 7])
