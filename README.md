@@ -1,6 +1,6 @@
-## Annual Protest Index
+## Annual Protest Mapping
 
-This is the back repository for the [Unrest Evaluation Index (UEI) Project](https://unrest-index.herokuapp.com/). UEI is a novel way to compare the intensity of protests across timeframes and locations. The interactive graph at [https://unrest-index.herokuapp.com/](https://unrest-index.herokuapp.com/) allows one to compare country-years of protests.
+This is the back repository for the [Unrest Evaluation Mapping (UEM) Project](https://unrest-mapping.herokuapp.com/). UEM is a novel way to compare the intensity of protests across timeframes and locations. The interactive graph at [https://unrest-index.herokuapp.com/](https://unrest-mapping.herokuapp.com/) allows one to compare country-years of protests.
 
 ### How to use
 
