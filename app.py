@@ -4,6 +4,7 @@ import dash_html_components as html
 import dash_bootstrap_components as dbc
 from dash.dependencies import Input, Output
 import plotly.express as px
+import plotly.graph_objects as go
 
 
 import pandas as pd
@@ -13,10 +14,12 @@ app = dash.Dash(__name__, meta_tags=[{"name": "viewport", "content": "width=devi
 app.title = 'Unrest Evaluation Index'
 server = app.server
 
+#
 df = pd.read_csv('https://raw.githubusercontent.com/orectique/protestindex/main/Factors.csv')
 
 available_countries = df['Country'].unique()
 rand_country = random.choice(available_countries)
+
 
 
 ########################################################
@@ -27,7 +30,7 @@ app.layout = html.Div([
         #Title, subtitle, button
         dcc.Markdown(
                             """
-                ### Quantifying events of Social Unrest: Unrest Evaluation Index (UEI)
+                ### Quantifying events of Social Unrest: Unrest Evaluation Mappping (UEM)
                 """.replace(
                                 "  ", ""
                             ),
@@ -36,9 +39,9 @@ app.layout = html.Div([
         dcc.Markdown(
                             """This interactive graph is a rendition of a study which explored the creation
                             of a new indexing system to effectively capture the scale and hence enable the comparison of social unrest across countries
-                            and years. Factor1 captures the fatality and peacefulness of protests in a country-year and Factor2 represents the number of 
-                            days of protest in a year. A high Factor1 value indicates that the events in the country-year were more violent than peaceful and saw a lot of fatalities
-                            and a low Factor1 value implies that events in the country-year were more peaceful than violent and saw a relatively low number of fatilites.
+                            and years. Unrest Severity captures the fatality and peacefulness of protests in a country-year and Unrest Intensity represents the number of 
+                            days of protest in a year. A high Unrest Severity value indicates that the events in the country-year were more violent than peaceful and saw a lot of fatalities
+                            and a low Unrest Severity value implies that events in the country-year were more peaceful than violent and saw a relatively low number of fatilites.
                             
                             To use the graph, choose countries from the dropdown menu and select the range of years using the slider below. """.replace(
                                 "  ", ""
@@ -66,6 +69,19 @@ app.layout = html.Div([
             value='plotly_dark',
             inputStyle={"margin-left": "10px"}),
             ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'25px 30px 30px 20px', 'color': 'white' }),
+
+
+html.Div([
+        dcc.RadioItems(
+            id = 'bg',
+            options=[
+        {'label': 'On', 'value': 'on'},
+        {'label': 'Off', 'value': 'off'}
+         ],
+            value='off',
+            inputStyle={"margin-left": "10px"}),
+            ], style = {'font-family' : '"Times New Roman", Times, serif', 'float': 'right', 'display': 'inline', 'padding':'25px 30px 30px 20px', 'color': 'white' }),
+
 
         html.Div([
         #country select
@@ -109,14 +125,24 @@ app.layout = html.Div([
     Output('indicator-graphic', 'figure'),
     Input('country', 'value'),
     Input('year--slider', 'value'),
-    Input('theme', 'value'))
-
-def update_graph(country_names, year_value, theme_val):
+    Input('theme', 'value'),
+    Input('bg', 'value')
+)
+def update_graph(country_names, year_value, theme_val, bg_val):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
-    fig = px.scatter(dff, x="Factor1", y="Factor2", template = theme_val, color = 'Country', hover_data=['Year'], title = "Scatter Plot of UEI Across Years")
 
+    df2 = df[df['Country'].isin(list(country_names)) == False]
+
+    fig = px.scatter(dff, x="Unrest Severity", y="Unrest Intensity", template = theme_val, color = 'Country', hover_data=['Year'], title = "UEM Across Years")
+    
+    #if bg_val == 'on':
+       #fig.add_trace(go.Scatter(x = df2.Factor1, y = df2.Factor2, mode = 'markers', showlegend = False))
+       #fig.add_trace(px.scatter(df2, x = 'Factor1', y = 'Factor2'))
+
+    fig.update_xaxes(range=[-7, 7])
+    fig.update_yaxes(range=[-2, 3.5])
 
     return fig
 
