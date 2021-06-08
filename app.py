@@ -30,7 +30,7 @@ app.layout = html.Div([
         #Title, subtitle, button
         dcc.Markdown(
                             """
-                ### Quantifying events of Social Unrest: Unrest Evaluation Mappping (UEM)
+                ### Quantifying events of Social Unrest: Unrest Evaluation Mapping (UEM)
                 """.replace(
                                 "  ", ""
                             ),
