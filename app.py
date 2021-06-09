@@ -53,7 +53,7 @@ app.layout = html.Div([
         html.Div([
             html.A(
                             html.Button("View the Code Notebook on GitHub.", className="learn-more-button"),
-                            href= 'https://www.youtube.com/watch?v=dQw4w9WgXcQ',
+                            href= 'https://raw.githubusercontent.com/orectique/unrest-mapping/main/Code%20Notebook',
                             target="_blank",
                         )
                     ],
