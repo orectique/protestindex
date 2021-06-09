@@ -120,8 +120,13 @@ def update_graph(country_names, year_value, theme_val):
     year_list = list( i for i in range(year_value[0], year_value[1] + 1))
     df1 = df[df['Country'].isin(list(country_names))]
     dff = df1[df1['Year'].isin(year_list)]
-
-    fig = px.scatter(dff, x="Unrest Severity", y="Unrest Intensity", template = theme_val, color = 'Country', hover_data=['Year'], title = "UEM Across Years")
+    
+    if len(list(country_names)) == 0:
+        df0 = pd.DataFrame({"Unrest Severity":[], "Unrest Intensity": []})
+        fig = px.scatter(df0, x="Unrest Severity", y="Unrest Intensity", template = theme_val, title = "UEM Across Years")
+        
+    else:
+        fig = px.scatter(dff, x="Unrest Severity", y="Unrest Intensity", template = theme_val, color = 'Country', hover_data=['Year'], title = "UEM Across Years")
 
     fig.update_xaxes(range=[-7, 7])
     fig.update_yaxes(range=[-2, 3.5])
