@@ -82,7 +82,7 @@ app.layout = html.Div([
                 multi = True,
                 clearable=False
             ),
-    ], style = {'width' : '100%', 'float':'left', 'display': 'inline-block', 'padding': '20px 10px 30px 20px', 'color':'black'}),
+    ], style = {'font-family' : '"Times New Roman", Times, serif', 'width' : '100%', 'float':'left', 'display': 'inline-block', 'padding': '20px 10px 30px 20px', 'color':'black'}),
 
     ], style = {'width' : '30%', 'float': 'left', 'display': 'inline-block'}),
 
@@ -130,6 +130,10 @@ def update_graph(country_names, year_value, theme_val):
 
     fig.update_xaxes(range=[-7, 7])
     fig.update_yaxes(range=[-2, 3.5])
+    
+    fig.update_layout(
+    font_family="Times New Roman",
+    title_font_family="Times New Roman")
 
     return fig
 
